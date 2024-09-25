@@ -6,18 +6,19 @@ import java.util.stream.IntStream;
 class ReversedSequence implements CharSequence{
     String string;
 
-    public ReversedSequence(String string) {
-        this.string = string;
+    ReversedSequence(String string) {
+        StringBuilder s  = new StringBuilder(string);
+        this.string = s.reverse().toString();
     }
 
     @Override
     public int length() {
-        return 0;
+        return string.length();
     }
 
     @Override
     public char charAt(int index) {
-        return 0;
+        return string.charAt(index);
     }
 
     @Override
@@ -27,17 +28,12 @@ class ReversedSequence implements CharSequence{
 
     @Override
     public CharSequence subSequence(int start, int end) {
-        return null;
+        return string.subSequence(start, end);
     }
 
     @Override
-    public IntStream chars() {
-        return CharSequence.super.chars();
-    }
-
-    @Override
-    public IntStream codePoints() {
-        return CharSequence.super.codePoints();
+    public String toString() {
+        return string;
     }
 }
 // END
