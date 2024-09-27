@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 // BEGIN
 public class PairedTag extends Tag {
-    private String body;
-    private List<Tag> children;
+    String body;
+    List<Tag> children;
 
     public PairedTag(String name, Map<String, String> attributes, String body, List<Tag> children) {
         super(name, attributes);

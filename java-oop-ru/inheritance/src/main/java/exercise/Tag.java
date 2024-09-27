@@ -5,15 +5,15 @@ import java.util.Map;
 
 // BEGIN
 public abstract class Tag {
-    protected String name;
-    protected Map<String, String> attributes;
+    String name;
+    Map<String, String> attributes;
 
     public Tag(String name, Map<String, String> attributes) {
         this.name = name;
         this.attributes = attributes;
     }
 
-    protected String getAttributesString() {
+    public String getAttributesString() {
         StringBuilder attributesString = new StringBuilder();
         for (Map.Entry<String, String> entry : attributes.entrySet()) {
             attributesString.append(String.format(" %s=\"%s\"", entry.getKey(), entry.getValue()));
