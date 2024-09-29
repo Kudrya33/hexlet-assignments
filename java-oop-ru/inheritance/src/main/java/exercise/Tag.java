@@ -1,24 +1,24 @@
 package exercise;
 
-
+import java.util.stream.Collectors;
 import java.util.Map;
 
 // BEGIN
-public abstract class Tag {
-    String name;
+abstract class Tag {
+    String tagName;
     Map<String, String> attributes;
 
-    public Tag(String name, Map<String, String> attributes) {
-        this.name = name;
+    public Tag(String tagName, Map<String, String> attributes) {
+        this.tagName = tagName;
         this.attributes = attributes;
     }
 
-    public String getAttributesString() {
-        StringBuilder attributesString = new StringBuilder();
-        for (Map.Entry<String, String> entry : attributes.entrySet()) {
-            attributesString.append(String.format(" %s=\"%s\"", entry.getKey(), entry.getValue()));
-        }
-        return attributesString.toString();
+    public String getTagName() {
+        return tagName;
+    }
+
+    public Map<String, String> getAttributes() {
+        return attributes;
     }
 
     public abstract String toString();

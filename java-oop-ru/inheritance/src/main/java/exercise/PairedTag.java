@@ -2,30 +2,37 @@ package exercise;
 
 import java.util.Map;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // BEGIN
-public class PairedTag extends Tag {
+class PairedTag extends Tag {
     String body;
     List<Tag> children;
 
-    public PairedTag(String name, Map<String, String> attributes, String body, List<Tag> children) {
-        super(name, attributes);
+    public PairedTag(String tagName, Map<String, String> attributes, String body, List<Tag> children) {
+        super(tagName, attributes);
         this.body = body;
         this.children = children;
     }
 
-    @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(String.format("<%s%s>", name, getAttributesString()));
-        if (!body.isEmpty()) {
-            stringBuilder.append(body);
+        StringBuilder builder = new StringBuilder();
+        builder.append(String.format("<%s", tagName));
+        for (Map.Entry<String, String> entry: attributes.entrySet()) {
+            builder.append(String.format(" %s=\"%s\"", entry.getKey(), entry.getValue()));
         }
-        for (Tag child : children) {
-            stringBuilder.append(child.toString());
+        builder.append(">");
+        builder.append(body);
+
+        for (Tag child: children) {
+            builder.append("<" + child.tagName);
+            for (Map.Entry<String, String> entry: child.getAttributes().entrySet()) {
+                builder.append(String.format(" %s=\"%s\">", entry.getKey(), entry.getValue()));
+            }
         }
-        stringBuilder.append(String.format("</%s>", name));
-        return stringBuilder.toString();
+
+        builder.append("</" + tagName + ">");
+        return builder.toString();
     }
 }
 // END
