@@ -1,29 +1,27 @@
 package exercise.dto;
 
-import jakarta.validation.constraints.*;
+// BEGIN
 import lombok.Getter;
 import lombok.Setter;
-
+import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 
-// BEGIN
-@Getter
 @Setter
+@Getter
 public class GuestCreateDTO {
-    @NotNull
+    @NotBlank
     private String name;
 
     @Email
     private String email;
 
-    @Pattern(regexp = "^\\+[0-9]{10,12}$")
+    @Pattern(regexp = "^\\+[0-9]{11,13}$")
     private String phoneNumber;
 
-    @Size(min = 4, max = 4)
-    @Pattern(regexp = "[0-9]{4}")
+    @Pattern(regexp = "^[0-9]{4}$")
     private String clubCard;
 
-    @FutureOrPresent
+    @Future
     private LocalDate cardValidUntil;
 }
 // END

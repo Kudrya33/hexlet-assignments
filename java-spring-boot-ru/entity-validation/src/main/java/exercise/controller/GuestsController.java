@@ -51,7 +51,8 @@ public class GuestsController {
     public GuestDTO create(@Valid @RequestBody GuestCreateDTO guestData) {
         var guest = guestMapper.map(guestData);
         guestRepository.save(guest);
-        return guestMapper.map(guest);
+        var guestDto = guestMapper.map(guest);
+        return guestDto;
     }
     // END
 }
